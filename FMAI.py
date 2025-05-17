@@ -64,7 +64,7 @@ class Hfe(nn.Module):
     def __init__(self, dim):
         super(Hfe, self).__init__()
 
-        self.crb = CRB(dim)
+        self.cr = CR(dim)
         self.DWT = DWT()
         self.IWT = IWT()
         self.conv1 = DSC(dim, dim)
