@@ -4,8 +4,6 @@ from einops import rearrange
 import torch.nn.functional as F
 from .dsc import DSC
 
-
-
 def dwt_init(x):
     x01 = x[:, :, 0::2, :] / 2
     x02 = x[:, :, 1::2, :] / 2
@@ -59,28 +57,7 @@ class IWT(nn.Module):
     def forward(self, ll, hl, lh, hh):
         x = torch.cat((ll, hl, lh, hh), 1)
         return iwt_init(x)
-class CRB(nn.Module):
-    def __init__(self, n_feat):
-        super(CRB, self).__init__()
 
-
-        self.fuse_weight_BTOR = torch.nn.Parameter(torch.FloatTensor(1), requires_grad=True)
-        self.fuse_weight_RTOB = torch.nn.Parameter(torch.FloatTensor(1), requires_grad=True)
-
-        self.fuse_weight_BTOR.data.fill_(0.2)
-        self.fuse_weight_RTOB.data.fill_(0.2)
-
-        self.conv_fuse_BTOR = nn.Sequential(nn.Conv2d(n_feat, n_feat * 3, 1, padding=0, bias=False), nn.Sigmoid())
-        self.conv_fuse_RTOB = nn.Sequential(nn.Conv2d(n_feat * 3, n_feat, 1, padding=0, bias=False), nn.Sigmoid())
-
-    def forward(self, high, low):
-        res_BTOR = high * self.conv_fuse_BTOR(low) * self.fuse_weight_BTOR
-        res_RTOB = low * self.conv_fuse_RTOB(high) * self.fuse_weight_RTOB
-
-        high_res = high - res_BTOR
-        low_res = low - res_RTOB
-
-        return high_res, low_res
 
 
 class Hfe(nn.Module):
