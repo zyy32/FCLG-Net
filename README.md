@@ -9,12 +9,15 @@ The paper is currently under submission. Once the paper is accepted, all code wi
 
 🔹 The segmentation results of different methods on the CrackTree260 Dataset
 
+![CrackTree260 Image 1](260.png)
 
 🔹 The segmentation results of different methods on the CrackLS315 Dataset
 
+![CrackLS315 Image 1](315.png)
 
 🔹 The segmentation results of different methods on the Crack760 Dataset
 
+![Crack760 Image 1](760.png)
 
 
 # Datesets
