@@ -20,7 +20,7 @@ The paper is currently under submission. Once the paper is accepted, all code wi
 ![Crack760 Image 1](760.png)
 
 
-# Datesets
+# Download Datasets
 
 crackTree260: https://1drv.ms/f/s!AittnGm6vRKLyiQUk3ViLu8L9Wzb
 
