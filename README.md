@@ -31,9 +31,9 @@ crackLs315: https://1drv.ms/f/s!AittnGm6vRKLtylBkxVXw5arGn6R
 Crack760: https://drive.google.com/open?id=1cplcUBmgHfD82YQTWnn1dssK2Z_xRpjx
 
 
-# Train
+# Run Train
   python train.py
   
-# Test
+# Run Test
   python test.py
 
