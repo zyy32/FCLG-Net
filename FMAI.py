@@ -93,9 +93,7 @@ class High_frequency_enhance(nn.Module):
         self.conv4 = DSC(dim, dim)
     def forward(self,x):
         ll,lh,hl,hh = self.DWT(x)
-        # high_btor = torch.cat([lh,hl,hh],dim=1)
-        # high_res,low_res = self.crb(high_btor,ll)
-        # lh_res,hl_res,hh_res = high_res.chunk(3,dim=1)
+
         lh_res = self.conv1(self.enhance(lh,ll)) + lh
         hl_res = self.conv2(self.enhance(hl,ll)) + hl
         hh_res = self.conv3(self.enhance(hh,ll)) + hh
