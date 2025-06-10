@@ -59,26 +59,50 @@ class IWT(nn.Module):
         return iwt_init(x)
 
 
-
-class Hfe(nn.Module):
+class High_enhance(nn.Module):
     def __init__(self, dim):
-        super(Hfe, self).__init__()
+        super(High_enhance, self).__init__()
 
-        self.cr = CR(dim)
+        self.norm = nn.BatchNorm2d(dim)
+
+        self.conv = nn.Conv2d(dim, dim, kernel_size=3, stride=1, padding=1, groups=dim)
+        # self.conv = DSC(dim, dim)
+        self.conv1 = nn.Conv2d(2, 1, 7, padding=3, bias=False)
+
+
+    def forward(self, high,low):
+        res = torch.cat([high,low],dim=1)
+        avg_out = torch.mean(res, dim=1, keepdim=True)
+        max_out, _ = torch.max(res, dim=1, keepdim=True)
+        x = torch.cat([avg_out, max_out], dim=1)
+        x = self.conv1(x)
+        sig = F.sigmoid(x)
+
+        return high * sig
+
+class High_frequency_enhance(nn.Module):
+    def __init__(self, dim):
+        super(High_frequency_enhance, self).__init__()
+
         self.DWT = DWT()
         self.IWT = IWT()
+        self.enhance = High_enhance(dim)
         self.conv1 = DSC(dim, dim)
         self.conv2 = DSC(dim, dim)
         self.conv3 = DSC(dim, dim)
         self.conv4 = DSC(dim, dim)
     def forward(self,x):
         ll,lh,hl,hh = self.DWT(x)
+        # high_btor = torch.cat([lh,hl,hh],dim=1)
+        # high_res,low_res = self.crb(high_btor,ll)
+        # lh_res,hl_res,hh_res = high_res.chunk(3,dim=1)
         lh_res = self.conv1(self.enhance(lh,ll)) + lh
         hl_res = self.conv2(self.enhance(hl,ll)) + hl
         hh_res = self.conv3(self.enhance(hh,ll)) + hh
         low_res = self.conv4(ll)
         res = self.IWT(low_res,lh_res,hl_res,hh_res)
         return res
+
 
 if __name__ == '__main__':
 
