@@ -1,7 +1,7 @@
 import torch
 import torch.nn as nn
 from .dsc import DSC,IDSC 
-from .FMAI import Hfe
+from .FMAI import High_frequency_enhance
 import torch.nn.functional as F
 from .transformer import Block
 
