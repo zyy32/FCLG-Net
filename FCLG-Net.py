@@ -1,7 +1,7 @@
 import torch
 import torch.nn as nn
 from .dsc import DSC,IDSC 
-from .FMAI import High_frequency_enhance
+from .FMAC import High_frequency_enhance
 import torch.nn.functional as F
 from .transformer import Block
 
@@ -79,9 +79,9 @@ class cfa(nn.Module):
 
 
 
-class LFWF(nn.Module):
+class LGAF(nn.Module):
     def __init__(self, n_feat, n_res):
-        super(LFWF, self).__init__()
+        super(LGAF, self).__init__()
 
         self.conv1 = DSC(n_feat, n_feat)
         self.conv3 = DSC(n_res, n_feat)
@@ -225,10 +225,10 @@ class FMLF(nn.Module):
         self.e3 = Hfe(256)
 
 
-        self.sam1 = LFWF(n_feat=32,n_res=16)
-        self.sam2 = LFWF(n_feat=64,n_res=16)
-        self.sam3 = LFWF(n_feat=128,n_res=16)
-        self.sam4 = LFWF(n_feat=256,n_res=16)
+        self.sam1 = LGAF(n_feat=32,n_res=16)
+        self.sam2 = LGAF(n_feat=64,n_res=16)
+        self.sam3 = LGAF(n_feat=128,n_res=16)
+        self.sam4 = LGAF(n_feat=256,n_res=16)
 
         self.t3 = IDSC(128, 256)
         self.t2 = IDSC(64, 128)
@@ -240,10 +240,10 @@ class FMLF(nn.Module):
         self.final = nn.Sequential(nn.PixelShuffle(4),
                                    IDSC(4, 1))
 
-        self.desam1 = LFWF(n_feat=16,n_res=16)
-        self.desam2 = LFWF(n_feat=32,n_res=16)
-        self.desam3 = LFWF(n_feat=64,n_res=16)
-        self.desam4 = LFWF(n_feat=128,n_res=16)
+        self.desam1 = LGAF(n_feat=16,n_res=16)
+        self.desam2 = LGAF(n_feat=32,n_res=16)
+        self.desam3 = LGAF(n_feat=64,n_res=16)
+        self.desam4 = LGAF(n_feat=128,n_res=16)
 
         self.d0 = Hfe(32)
         self.d1 = Hfe(64)
