@@ -122,7 +122,7 @@ class Decoder5(nn.Module):
         super(Decoder5, self).__init__()
         self.block32 = Block(16, window_size=2, alpha=0.5)
         self.up2 = IDSC(16,3)
-        self.sam5 = ASISF(n_feat=16,n_res=3)
+        self.sam5 = ASIS(n_feat=16,n_res=3)
 
     def forward(self, x):
 
