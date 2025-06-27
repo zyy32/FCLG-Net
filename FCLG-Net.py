@@ -168,7 +168,7 @@ class LR(nn.Module):
 
         return res2_sam,res3_sam,res4_sam,res5_sam
 
-class FMLF(nn.Module):
+class FCLG(nn.Module):
     def __init__(self):
         super(FMLF, self).__init__()
 
