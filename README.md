@@ -1,4 +1,4 @@
-# FMLF-Net
+# FCLG-Net
 FCLG-Net: Frequency Multi-angle Compensation and Low-resolution Guided Network for Pavement Crack Segmentation.
 
 The paper is currently under submission. Once the paper is accepted, all code will be made publicly available. Stay tuned for updates! 🚀
