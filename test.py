@@ -2,12 +2,12 @@ import torch
 import numpy as np
 from torch.loss.data import DataLoader
 import os
-from FMLF_Net import FMLF
+from FCLG_Net import FCLG
 from utils.dataloader1 import Datases_loader as dataloader
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 batchsz = 1
-model = FMLF().to(device)
+model = FCLG().to(device)
 savedir = r'/T2020027/ayyz2/'
 imgdir = r'/T2020027/ayyz2/data/CrackTree260'
 labdir = r'/T2020027/ayyz2/data/gt'
