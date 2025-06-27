@@ -1,5 +1,5 @@
 # FMLF-Net
-FMLF-Net: Frequency-domain multi-angle interaction and low-resolution fusion network for pavement crack segmentation.
+FCLG-Net: Frequency Multi-angle Compensation and Low-resolution Guided Network for Pavement Crack Segmentation.
 
 The paper is currently under submission. Once the paper is accepted, all code will be made publicly available. Stay tuned for updates! 🚀
 
