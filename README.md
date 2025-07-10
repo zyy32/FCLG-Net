@@ -7,17 +7,11 @@ The paper is currently under submission. Once the paper is accepted, all code wi
   
 # 📸 Qualitative Results
 
-🔹 The segmentation results of different methods on the CrackTree260 Dataset
+🔹 The segmentation results of different methods on the CrackTree260, CrackLS315, and Crack760 datasets
 
-![CrackTree260 Image 1](260.png)
+![CrackTree260 Image 1](img.png)
 
-🔹 The segmentation results of different methods on the CrackLS315 Dataset
 
-![CrackLS315 Image 1](315.png)
-
-🔹 The segmentation results of different methods on the Crack760 Dataset
-
-![Crack760 Image 1](760.png)
 
 
 # Download Datasets
