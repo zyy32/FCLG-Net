@@ -8,11 +8,11 @@ from utils.dataloader1 import Datases_loader as dataloader
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 batchsz = 1
 model = FCLG().to(device)
-savedir = r'/T2020027/ayyz2/'
-imgdir = r'/T2020027/ayyz2/data/CrackTree260'
-labdir = r'/T2020027/ayyz2/data/gt'
+savedir = r'/T2020027/a2/'
+imgdir = r'/T2020027/a2/data/CrackTree260'
+labdir = r'/T2020027/a2/data/gt'
 imgsz = 256
-resultsdir = r'/T2020027/ayyz2/crackmer/imgs/260'
+resultsdir = r'/T2020027/a2/crackmer/imgs/260'
 
 dataset = dataloader(imgdir, labdir, imgsz, imgsz)
 testsets = DataLoader(dataset, batch_size=batchsz, shuffle=False)
@@ -32,7 +32,7 @@ def test():
         np.save(resultsdir + r'/img' + str(idx+1) + '.npy', img.detach().cpu().numpy())
         np.save(resultsdir + r'/pred' + str(idx+1) + '.npy', pred.detach().cpu().numpy())
         np.save(resultsdir + r'/label' + str(idx+1) + '.npy', lab.detach().cpu().numpy())
-    print('结束')
+    print('out')
 
 if __name__ == '__main__':
     test()
